@@ -1,7 +1,11 @@
 # TODO
-  - [ ] Test request handler
+  - [ ] extract requestParse function
+  - [ ] extract responce function
+  - [ ] Wrap the response in html format
 
 # DONE
+  - [X] Rename requestParser to parseReqLine
+  - [X] Test request handler
   - [X] Implement requestHandler
   - [X] Test request paser
   - [X] Create request parser

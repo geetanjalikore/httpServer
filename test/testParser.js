@@ -1,9 +1,9 @@
-const { parseRequest, parseHeader, extractField } = require('../src/parser.js');
+const { parseReqLine, parseHeader, extractField } = require('../src/parser.js');
 const assert = require('assert');
 
 describe('parseRequest', () => {
   it('Should parse the request line', () => {
-    assert.deepStrictEqual(parseRequest('GET / HTTP/1.1'), {
+    assert.deepStrictEqual(parseReqLine('GET / HTTP/1.1'), {
       method: 'GET', uri: '/', protocol: 'HTTP/1.1'
     });
   });

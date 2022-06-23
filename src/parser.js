@@ -1,4 +1,4 @@
-const parseRequest = line => {
+const parseReqLine = line => {
   const [method, uri, protocol] = line.split(' ');
   return { method, uri, protocol };
 };
@@ -13,13 +13,15 @@ const extractField = (line) => {
 const parseHeader = (lines) => {
   const headers = {};
   let index = 0;
+
   while (index < lines.length && lines[index].length > 1) {
     const { name, value } = extractField(lines[index]);
     headers[name] = value;
     index++;
   }
+
   return headers;
 };
 
-module.exports = { parseRequest, parseHeader, extractField };
+module.exports = { parseReqLine, parseHeader, extractField };
 
