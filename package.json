@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha -w -R dot",
-    "start:dev": "nodemon node index.js"
+    "start:dev": "nodemon node index.js ./public"
   },
   "keywords": [],
   "author": "",

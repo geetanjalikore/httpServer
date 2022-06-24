@@ -1,8 +1,10 @@
 # TODO
-  - [ ] Change the mocking of socket
-  - [ ] Wrap the response in html format
-
+  - [ ] Implement countPageHits
+  
 # DONE
+  - [X] Implement createHandlers
+  ~~- [ ] Change the mocking of socket~~
+  - [X] Wrap the response in html format
   - [X] Implemented serveFileContent
   - [X] Add feature of addition
   - [X] extract response entity

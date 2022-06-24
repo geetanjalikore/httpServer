@@ -25,6 +25,7 @@ const parseHeader = (lines) => {
 
 const parseRequest = (chunk) => {
   const lines = chunk.split('\r\n');
+  console.log(lines[0]);
   const reqLine = parseReqLine(lines[0]);
   const headers = parseHeader(lines.slice(1));
   return { ...reqLine, headers };

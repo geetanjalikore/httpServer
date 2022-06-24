@@ -1,4 +1,4 @@
-const { requestHandler } = require('../src/server.js');
+const { requestHandler } = require('../src/handlers.js');
 const assert = require('assert');
 
 const mockSocket = (statusLine) => ({
@@ -9,12 +9,11 @@ const mockSocket = (statusLine) => ({
 
 describe('requestHandler', () => {
   it('should handle the request', () => {
-    const socket = mockSocket('HTTP/1.1 200 ok\r\n\r\n');
-    requestHandler(socket, { uri: '/' });
-
+    const socket = mockSocket('HTTP/1.1 404 ok\r\n\r\n');
+    requestHandler(socket, { uri: '/hello' });
     assert.deepStrictEqual(
       socket.content,
-      'HTTP/1.1 200 ok\r\n\r\nWelcome'
+      'HTTP/1.1 404 ok\r\n\r\nNot found'
     );
   });
 
@@ -24,7 +23,7 @@ describe('requestHandler', () => {
 
     assert.deepStrictEqual(
       socket.content,
-      'HTTP/1.1 404 ok\r\n\r\nnot found'
+      'HTTP/1.1 404 ok\r\n\r\nWelcome Geets'
     );
   });
 
