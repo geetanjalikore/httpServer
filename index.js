@@ -1,4 +1,4 @@
-const { server } = require('./server.js');
+const { server } = require('./src/server.js');
 
 const PORT = 8000;
 server.listen(PORT, () => {

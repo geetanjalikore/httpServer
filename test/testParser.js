@@ -1,4 +1,4 @@
-const { parseReqLine, parseHeader, extractField } = require('../src/parser.js');
+const { parseReqLine, parseHeader, extractField, parseRequest } = require('../src/parser.js');
 const assert = require('assert');
 
 describe('parseRequest', () => {
@@ -32,5 +32,20 @@ describe('extractField', () => {
 
   it('should extract the field name and value with space', () => {
     assert.deepStrictEqual(extractField('host: localhost:8000'), { name: 'host', value: 'localhost:8000' });
+  });
+});
+
+describe('parseRequest', () => {
+  it('Should the parse request', () => {
+    const expected = {
+      method: 'GET',
+      uri: '/',
+      protocol: 'HTTP/1.1',
+      headers: {
+        host: 'localhost:8000'
+      }
+    };
+    const request = 'GET / HTTP/1.1\r\nhost:localhost:8000';
+    assert.deepStrictEqual(parseRequest(request), expected);
   });
 });

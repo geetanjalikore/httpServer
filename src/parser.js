@@ -23,5 +23,11 @@ const parseHeader = (lines) => {
   return headers;
 };
 
-module.exports = { parseReqLine, parseHeader, extractField };
+const parseRequest = (chunk) => {
+  const lines = chunk.split('\r\n');
+  const reqLine = parseReqLine(lines[0]);
+  const headers = parseHeader(lines.slice(1));
+  return { ...reqLine, headers };
+}
 
+module.exports = { parseReqLine, parseHeader, parseRequest, extractField };
