@@ -1,7 +1,8 @@
 # TODO
-  - [X] Load the large pages (pokemon)
-
+  - [ ] Read file contents before starting server.
+  
 # DONE
+  - [X] Load the large pages (pokemon)
   - [X] Implement countPageHits
   - [X] Implement createHandlers
   ~~- [ ] Change the mocking of socket~~
