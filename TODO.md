@@ -1,8 +1,9 @@
 # TODO
-  - [ ] Redirect the old url to new url
   - [ ] Read file contents before starting server.
 
 # DONE
+  - [X] Implement form with different types of inputs
+  - [X] Redirect the old url to new url
   - [X] Load the large pages (pokemon)
   - [X] Implement countPageHits
   - [X] Implement createHandlers

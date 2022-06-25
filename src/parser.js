@@ -1,6 +1,23 @@
+function splitParams(paramsString) {
+  const params = {}
+  const rawParams = paramsString.split('&');
+
+  rawParams.forEach(param => {
+    const [num, value] = param.split('=');
+    params[num] = value;
+  });
+  return params;
+}
+
 const parseReqLine = line => {
-  const [method, uri, protocol] = line.split(' ');
-  return { method, uri, protocol };
+  let params = {};
+  const [method, rawUri, protocol] = line.split(' ');
+  const [uri, paramsString] = rawUri.split('?');
+
+  if (paramsString) {
+    params = splitParams(paramsString);
+  }
+  return { method, uri, params, protocol };
 };
 
 const extractField = (line) => {
@@ -25,8 +42,8 @@ const parseHeader = (lines) => {
 
 const parseRequest = (chunk) => {
   const lines = chunk.split('\r\n');
-  console.log(lines[0]);
   const reqLine = parseReqLine(lines[0]);
+  console.log(reqLine);
   const headers = parseHeader(lines.slice(1));
   return { ...reqLine, headers };
 }
