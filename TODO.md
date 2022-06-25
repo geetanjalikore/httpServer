@@ -1,7 +1,8 @@
 # TODO
-  - [ ] Implement countPageHits
-  
+  - [X] Load the large pages (pokemon)
+
 # DONE
+  - [X] Implement countPageHits
   - [X] Implement createHandlers
   ~~- [ ] Change the mocking of socket~~
   - [X] Wrap the response in html format

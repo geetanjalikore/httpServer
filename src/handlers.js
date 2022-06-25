@@ -50,4 +50,16 @@ const notFoundError = (response, request) => {
   response.send('Not found');
 };
 
-module.exports = { requestHandler, serveFileContents, notFoundError } 
+const countHandler = () => {
+  let count = 0;
+  return (response, { uri }) => {
+    count++;
+    if (uri === '/count') {
+      response.send(`Number of hits : ${count}`);
+      return true;
+    }
+    return false;
+  }
+};
+
+module.exports = { requestHandler, serveFileContents, notFoundError, countHandler } 

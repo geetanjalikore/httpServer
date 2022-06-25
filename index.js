@@ -1,7 +1,7 @@
 const { createServer } = require('net');
 const { parseRequest } = require('./src/parser.js');
 const { Response } = require('./src/response.js');
-const { requestHandler, serveFileContents, notFoundError } = require("./src/handlers.js");
+const { requestHandler, serveFileContents, notFoundError, countHandler } = require("./src/handlers.js");
 
 const createHandler = (handlers) => {
   return (response, request, path) => {
@@ -21,7 +21,7 @@ const onConnection = (socket, handle, path) => {
   });
 };
 
-const handlers = [requestHandler, serveFileContents, notFoundError];
+const handlers = [countHandler(), requestHandler, serveFileContents, notFoundError];
 
 const main = (path) => {
   const server = createServer((socket) => {
