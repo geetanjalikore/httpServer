@@ -1,31 +1,9 @@
 const { createServer } = require('net');
-const { parseRequest } = require('./src/parser.js');
-const { Response } = require('./src/response.js');
-const { requestHandler, serveFileContents, notFoundError, countHandler } = require("./src/handlers.js");
-
-const createHandler = (handlers) => {
-  return (response, request, path) => {
-    for (const handler of handlers) {
-      if (handler(response, request, path)) {
-        return true;
-      }
-    }
-  }
-};
-
-const onConnection = (socket, handle, path) => {
-  socket.on('data', (chunk) => {
-    const request = parseRequest(chunk.toString());
-    const response = new Response(socket);
-    handle(response, request, path);
-  });
-};
-
-const handlers = [countHandler(), requestHandler, serveFileContents, notFoundError];
+const { connectToServer } = require('./src/handlers.js');
 
 const main = (path) => {
   const server = createServer((socket) => {
-    onConnection(socket, createHandler(handlers), path);
+    connectToServer(socket, path);
   });
 
   const PORT = 8000;

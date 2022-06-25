@@ -1,6 +1,7 @@
 # TODO
+  - [ ] Redirect the old url to new url
   - [ ] Read file contents before starting server.
-  
+
 # DONE
   - [X] Load the large pages (pokemon)
   - [X] Implement countPageHits
